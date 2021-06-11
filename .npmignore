@@ -1,0 +1,6 @@
+# Tests and Other MeMock Files
+tests
+*.test.js
+memock-hardlogs.txt 
+old-memock.js
+

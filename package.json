@@ -1,0 +1,34 @@
+{
+  "name": "memock",
+  "version": "2.0.0",
+  "description": "A NodeJS library for developing mock servers to aid in development tools like APIs without access to seperate severs. It will allow you to develop and initiate a server that serves predetermined files and JSON objects over predetermined nodes, all with a few lines of JavaScript code.",
+  "main": "memock.js",
+  "scripts": {
+    "test": "node ./tests/mainTest.js",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ray6464/Memock.git"
+  },
+  "keywords": [
+    "npm",
+    "nodejs",
+    "server",
+    "rayvoice"
+  ],
+  "author": "Ray Voice, Anna Voice",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ray6464/Memock/issues"
+  },
+  "homepage": "https://github.com/Ray6464/Memock#readme",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "express": "^4.17.1",
+    "hardlog": "^2.0.0"
+  },
+  "devDependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
