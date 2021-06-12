@@ -10,28 +10,15 @@ const crypto = require('crypto');
 function getHashOfFile(fileName) {
   const hash = crypto.createHash('sha256');
   hash.setEncoding('hex');
-
   const fileURL = path.join(server.filesDirectory, fileName);
-  //const fileData = fs.createReadStream(fileURL);
   const fileData = fs.readFileSync(fileURL, "utf8");
-/*
-  fileData.on('open', () => {
-    fileData.pipe(hash);
-  });
-
-  fileData.on('end', () => {
-    hash.end();
-    //return hash.read();
-  });
-*/
-  //return hash.read();
   hash.write(fileName);
   hash.end();
   return hash.read();
 }
 
 const libraryInfo = {
-  version: () => "3.0.0",
+  version: () => "3.0.1",
   authors: () => "Ray Voice and Anna Voice",
   logFile: () => "memock-hardlogs.txt",
 }
@@ -115,6 +102,9 @@ module.exports = {
   },
   mainPageJSON: function (json) {
     server.mainJSONToServeAtRoot = json;
+    if (server.mainJSONToServeAtRoot.hashMap == undefined) {
+      server.mainJSONToServeAtRoot.hashMap = [];
+    }
   },
   setServerDelay: function (delayTime) {
     server.delayToMimicRealLatency = delayTime;
