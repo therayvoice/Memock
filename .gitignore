@@ -3,6 +3,7 @@ tests
 *.test.js
 memock-hardlogs.txt 
 old-memock.js
+memock-hardlogs.txt
 
 # Logs
 logs
