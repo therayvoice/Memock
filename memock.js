@@ -4,9 +4,34 @@ const app = express();
 const path = require('path');
 const hardlog = require('hardlog');
 const chalk = require('chalk');
+const fs = require('fs');
+const crypto = require('crypto');
+
+function getHashOfFile(fileName) {
+  const hash = crypto.createHash('sha256');
+  hash.setEncoding('hex');
+
+  const fileURL = path.join(server.filesDirectory, fileName);
+  //const fileData = fs.createReadStream(fileURL);
+  const fileData = fs.readFileSync(fileURL, "utf8");
+/*
+  fileData.on('open', () => {
+    fileData.pipe(hash);
+  });
+
+  fileData.on('end', () => {
+    hash.end();
+    //return hash.read();
+  });
+*/
+  //return hash.read();
+  hash.write(fileName);
+  hash.end();
+  return hash.read();
+}
 
 const libraryInfo = {
-  version: () => "2.0.0",
+  version: () => "3.0.0",
   authors: () => "Ray Voice and Anna Voice",
   logFile: () => "memock-hardlogs.txt",
 }
@@ -22,7 +47,8 @@ const server = {
   filesDirectory: path.join(__dirname, "servedFiles"),
   mainJSONToServeAtRoot: {
     name: "MeMock Server",
-    version: libraryInfo.version
+    version: libraryInfo.version,
+    hashMap: []
   },
   delayToMimicRealLatency: 10000,
   map: []
@@ -43,6 +69,7 @@ function startServer() {
   // creating a server-map
   server.filesToServe.forEach((fileName, fileNumber) => {
     const nodeOfFile = nodeNameOf(fileNumber);
+
     server.map.push({
       file: fileName,
       node: nodeOfFile
@@ -94,6 +121,10 @@ module.exports = {
   },
   addFile: function (fileName) {
     server.filesToServe.push(path.basename(fileName));
+    server.mainJSONToServeAtRoot.hashMap.push({
+      file: fileName,
+      hash: getHashOfFile(fileName)
+    });    
   },
   setFilesDirectory: function (dir) {
     // dir must be an absolute address pointing to a directory/folder
