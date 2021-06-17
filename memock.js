@@ -12,7 +12,7 @@ function getHashOfFile(fileName) {
   hash.setEncoding('hex');
   const fileURL = path.join(server.filesDirectory, fileName);
   const fileData = fs.readFileSync(fileURL, "utf8");
-  hash.write(fileName);
+  hash.write(fileName); //check if we want fileName or fileData here. Test if MeMock works properly, then switch if needed
   hash.end();
   return hash.read();
 }
