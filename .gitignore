@@ -1,6 +1,11 @@
+# MISC
+oldFiles
+
 # Tests and Other MeMock Files
 tests
 *.test.js
+test.js
+*.txt
 memock-hardlogs.txt 
 old-memock.js
 memock-hardlogs.txt
