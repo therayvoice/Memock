@@ -1,10 +1,7 @@
 {
   "name": "MeMock Server",
-  "version": "6.0.0",
-  "hashMap": [],
-  "filesToServe": [],
+  "version": "6.5.2",
   "map": [],
   "delayToMimicRealLatency": 10000,
-  "port": 4321,
-  "filesDirectory": "."
+  "port": 4321
 }
