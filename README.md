@@ -1,19 +1,31 @@
 # Memock
-A NodeJS library for developing mock servers to aid in development tools like APIs without access to seperate severs. It will allow you to develop and initiate a server that serves predetermined files and JSON objects over predetermined nodes, all with a few lines of JavaScript code.
+![GitHub repo size](https://img.shields.io/github/repo-size/ray6464/memock)
+![npm](https://img.shields.io/npm/dm/memock)
+![NPM](https://img.shields.io/npm/l/memock)
+![Twitter Follow](https://img.shields.io/twitter/follow/rayshorthead?style=social)
+![npm](https://img.shields.io/npm/v/memock)
+
+A NodeJS library for developing back-end tools, mock servers, mock APIs, etc. It will allow you to develop and initiate a server that serves predetermined files and JSON objects over predetermined nodes, all with a few lines of JavaScript code.
 
 # Installation
 Use the following command to install MeMock as a development-tool:
 ```
 npm i memock --save-dev
 ```
+
 # Usage
 To start the server, with all the default settings:
 ```
 const memock = require('memock');
 
-memock.init(); // starts the server
+memock
+  .mainPageJSON("Your Website Name", "v1.2.3")
+  .init(); // starts the server
 ```
 
+A basic JSON object will be served at "/".
+
+# Configure
 To configure the server add the configuration code before starting the server:
 ```javascript
 const memock = require('memock');
