@@ -1,6 +1,6 @@
 {
   "name": "MeMock Server",
-  "version": "6.5.4",
+  "version": "6.5.5",
   "nodeMap": [],
   "delayToMimicRealLatency": 10000,
   "port": 4321

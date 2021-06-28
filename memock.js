@@ -2,9 +2,10 @@
 const fs = require('ray-fs');
 const serve = require('ray-serve');
 const hash = require('ray-hash');
+const path = require('path');
 
 const memockAuthors = "Ray Voice and Anna Voice";
-const baseServer = fs.readJSON('basic-server-info.json').value;
+const baseServer = fs.readJSON(path.join(__dirname, 'basic-server-info.json')).value;
 baseServer.port = serve.port;
 baseServer.delayToMimicRealLatency = serve.latency;
 
